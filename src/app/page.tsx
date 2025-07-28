@@ -7,16 +7,22 @@ import type { Friend, Tab } from '@/lib/types';
 import type { NewTabFormData } from '@/components/new-tab-item-dialog';
 
 export default function Home() {
-    // Constants & Functions
-    const [friends, setFriends] = useState([]);
+    // Constants
+    const [friends, setFriends] = useState<Friend[]>([]);
 
-    const [tabs, setTabs] = useState([]);
+    const [tabs, setTabs] = useState<Tab[]>([]);
 
-    const handleAddTab = (data : NewTabFormData) => {
-
+    // Functions
+    const handleAddFriend = (data : string) => {
+        const newFriend: Friend = {
+            id: crypto.randomUUID(),
+            name: data
+        };
+        setFriends((prevFriends) => [...prevFriends, newFriend]);
+        return newFriend;
     };
 
-    const handleAddFriend = (data : string) => {
+    const handleAddTab = (data : NewTabFormData) => {
 
     };
 
